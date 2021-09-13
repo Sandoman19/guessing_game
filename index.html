@@ -1,35 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Sandoman's Code Quiz</title>
+        <link rel="stylesheet" href="assets/style.css" />
+    </head>
 
-<body>
-    
-    <!-- only show when game is running need timer here -->
-    <nav></nav>
+    <body>
 
-    <!-- need a start page -->
-    <!-- hide when game is running -->
-    <section id='start-page'> 
+        <div class="wrapper">
 
+            <div id="start-screen" class="start">
+                <!-- header -->
+                <h1>Quiz Coding</h1>
+                <!-- something sweet to get them in the mood -->
+                <p>
+                Starting statement
+                </p>
+                <!-- Start button -->               
+                <button id="start">Start Quiz</button>
 
-    </section>
+            </div>
 
-    <!-- need question page/pages -->
-    <!-- show when game is running -->
-    <section id='questions'> 
+            <div>
+                <!-- header -->
+                <h2>Your Finnished</h2>
+                <!-- Note final score -->
+                <p>
+                    Your final score is.
+                </p>
+                <!-- Initials and submit -->                
+                <p>
+                    Enter initials: <input type="text" id="initials"/>
+                    <button id="submit">Submit</button>
+                </p>
 
-        
-    </section>
+            </div>
 
-    <!-- need highest score page -->
-    <!-- hide when game is running -->
-    <!-- show once game has been completed -->    
-    <section id='highest-score'> 
+        </div>
 
-        
-    </section>
+        <!-- Timer -->         
+        <div class="timer">Time: <span id="time">0</span></div>
+        <!-- score -->   
+        <div class="scores"><a href="score.html">View Highscores</a></div>
 
-</body>
+        <!-- grab javaScript -->  
+        <script src="assets/script.js" defer></script>
 
-const question = [];
-
-function renderquestion(index) {
-    
-}
+    </body>
+</html>
