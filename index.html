@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,44 +11,66 @@
 
     <body>
 
-        <div class="wrapper">
+        <div class="container">
+
+            <header class="row">
+                <!-- Highscore/leadersboard -->                 
+                <div class="highscores" id="highscores">
+                    <a href="./highScore.html">View Highscores</a>
+                </div>
+                <!-- Timer -->         
+                <div class="timer">Time: <span id="time"></span></div>
+    
+            </header>
 
             <div id="start-screen" class="start">
                 <!-- header -->
-                <h1>Quiz Coding</h1>
-                <!-- something sweet to get them in the mood -->
+                <h1>Sando's Quiz About Coding</h1>
                 <p>
-                Starting statement
+                    You will have 120 seconds to answer nine 
+                    questions to prove you know your stuff. 
+                    Each incorrect answer will result in your score and time being 
+                    deducted by 10.
                 </p>
-                <!-- Start button -->               
-                <button id="start">Start Quiz</button>
-
             </div>
-
-            <div>
+            
+            <!-- question and answer container below -->              
+            <div id='question-container' class='hide'>
+                <div id='question'>Question</div>
+                <div id='answer-buttons' class='btn-grid'>
+                    <button class='btn'>answer 1</button>
+                    <button class='btn'>answer 2</button>
+                    <button class='btn'>answer 3</button>
+                    <button class='btn'>answer 4</button>
+                </div>             
+            </div>
+            <!-- Start and next button -->  
+            <div class="controls">
+                <button id="start-btn" class="start-btn btn">Start</button>
+                <button id="next-btn" class="next-btn btn hide">Next</button>
+            </div> 
+            <div id="game-over-screen" class="hide">
                 <!-- header -->
-                <h2>Your Finnished</h2>
+                <h2>GAME OVER</h2>
                 <!-- Note final score -->
                 <p>
-                    Your final score is.
+                    You scored <span id="final-score"></span>.
                 </p>
                 <!-- Initials and submit -->                
                 <p>
-                    Enter initials: <input type="text" id="initials"/>
-                    <button id="submit">Submit</button>
+                    Enter Your Initials Here: <input type="text" id="initials"/>
+                    <button id="submit-btn" class="submit-btn btn">Submit</button>
                 </p>
 
             </div>
 
         </div>
 
-        <!-- Timer -->         
-        <div class="timer">Time: <span id="time">0</span></div>
-        <!-- score -->   
-        <div class="scores"><a href="score.html">View Highscores</a></div>
-
         <!-- grab javaScript -->  
+        <script src="assets/question_script.js" defer></script>
+        <script src="assets/score_script.js" defer></script>
         <script src="assets/script.js" defer></script>
 
     </body>
+
 </html>
