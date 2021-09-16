@@ -21,7 +21,8 @@ startBtn.addEventListener('click', startGame)
 function startGame() {
     timeLeftEl.classList.remove('hide')    
     // run the timer function once start game button has been pressed
-    timer()
+    timeStop = false;
+    timeKeeper()
     // hide unnecessary containers
     startBtn.classList.add('hide')
     highscoreEl.classList.add('hide')
@@ -57,21 +58,19 @@ function showQuestion(question) {
 }
 
 // timer
-function timer() {
+function timeKeeper() {
     // start timer
-    timeStop = setInterval(outOfTime, 1000);
-
-    var Timer = setInterval(function(){
+    var timer = setInterval(function(){
     // change time till timeleft is equal to or less than zero
-    if(time <= 0){
-        clearInterval(Timer);
+    if(time <= 0 || timeStop){
+        clearInterval(timer);
         timeLeftEl.classList.add('hide')
 //        timeLeftEl.innerHTML = "Game Over";
     } else {
         timeLeftEl.innerHTML = "Time: " + time;
+        // take one every second      
+        time -= 1;
     } 
-    // take one every second      
-    time -= 1;
     }, 1000);
 }
 
@@ -128,7 +127,7 @@ function clearStatusClass(element) {
 
 function gameOverEl() {
     // stop timer
-    clearInterval(timeStop);  
+    timeStop = true;
     // show end screen
     var endScreenEl = document.getElementById("game-over-screen");
     endScreenEl.removeAttribute("class");  
