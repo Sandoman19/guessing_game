@@ -8,4 +8,5 @@ errors that still need fixing
 
 You will have 90 seconds to answer nine questions to prove you know your stuff. 
 Each incorrect answer will result in your score and time being deducted by 10.
-f
+
+![Project Screenshot](.assets/photos/loadingPage.PNG)
