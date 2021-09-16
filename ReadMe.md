@@ -9,7 +9,7 @@ errors that still need fixing
 You will have 90 seconds to answer nine questions to prove you know your stuff. 
 Each incorrect answer will result in your score and time being deducted by 10.
 
-![Project Screenshot](.assets/photos/loadingPage.PNG)
-![Project Screenshot](.assets/photos/QuestionsPage.PNG)
-![Project Screenshot](.assets/photos/SubmitScreen.PNG)
-![Project Screenshot](.assets/photos/highestScore.PNG)
+![Project Screenshot](assets/photos/loadingPage.PNG)
+![Project Screenshot](assets/photos/QuestionsPage.PNG)
+![Project Screenshot](assets/photos/SubmitScreen.PNG)
+![Project Screenshot](assets/photos/highestScore.PNG)
