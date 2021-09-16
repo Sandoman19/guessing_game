@@ -1,30 +1,25 @@
-const startBtn = document.getElementById('start-btn')
-const nextBtn = document.getElementById('next-btn')
-const submitBtn = document.getElementById('submit-btn')
-const questionContainerEL = document.getElementById('question-container')
-const questionsEl = document.getElementById('question')
-const answerBtnsEL = document.getElementById('answer-buttons')
-const timeLeftEl = document.getElementById('time') 
-const highscoreEl = document.getElementById('highscores')
-const startEl = document.getElementById('start-screen')  
+const startBtn = document.getElementById('start-btn');
+const submitBtn = document.getElementById('submit-btn');
+const questionContainerEL = document.getElementById('question-container');
+const questionsEl = document.getElementById('question');
+const answerBtnsEL = document.getElementById('answer-buttons');
+const timeLeftEl = document.getElementById('timer');
+const highscoreEl = document.getElementById('highscores');
+const startEl = document.getElementById('start-screen');  
 const initialsEl = document.querySelector("#initials");
 
 // starting time, made this way to suit if i add more question later
-var time = questions.length * 15;
+var time = questions.length * 10;
 var timeStop;
 
 let shuffledQuestions, currentQuestionIndex
 
 // add listener to start the game
 startBtn.addEventListener('click', startGame)
-// add listener to go to next question
-nextBtn.addEventListener('click', () => {
-    currentQuestionIndex++
-    // run next question fuction    
-    setNextQuestion()
-})
+
 
 function startGame() {
+    timeLeftEl.classList.remove('hide')    
     // run the timer function once start game button has been pressed
     timer()
     // hide unnecessary containers
@@ -63,25 +58,26 @@ function showQuestion(question) {
 
 // timer
 function timer() {
+    // start timer
+    timeStop = setInterval(outOfTime, 1000);
 
     var Timer = setInterval(function(){
     // change time till timeleft is equal to or less than zero
     if(time <= 0){
         clearInterval(Timer);
-        timeLeftEl.innerHTML = "Your ran out of time";
+        timeLeftEl.classList.add('hide')
+//        timeLeftEl.innerHTML = "Game Over";
     } else {
-        timeLeftEl.innerHTML = time;
+        timeLeftEl.innerHTML = "Time: " + time;
     } 
     // take one every second      
     time -= 1;
     }, 1000);
-
 }
 
 function resetState() {
     // clear the body of the page
     clearStatusClass(document.body)
-    nextBtn.classList.add('hide')
     while (answerBtnsEL.firstChild) {
         answerBtnsEL.removeChild(answerBtnsEL.firstChild)
     }
@@ -97,22 +93,22 @@ function selectAnswer(event) {
     Array.from(answerBtnsEL.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
-
     if (!correct) {
         // penalize time if you get the wrong answer
-        time -= 15;        
+        time -= 10;        
     }
-
-    currentQuestionIndex++;
-    
+    // move to the next question
+    currentQuestionIndex++;   
     // not sure why this wont work
     if (shuffledQuestions.length === currentQuestionIndex) {
+        timeLeftEl.classList.add('hide')
         gameOverEl()
     } else {
         setNextQuestion()
     }    
 
 }
+
 
 function setStatusClass(element, correct) {
     // set status class as per answer
@@ -132,16 +128,16 @@ function clearStatusClass(element) {
 
 function gameOverEl() {
     // stop timer
-    clearInterval(timeStop);
-  
+    clearInterval(timeStop);  
     // show end screen
     var endScreenEl = document.getElementById("game-over-screen");
-    endScreenEl.removeAttribute("class");
-  
+    endScreenEl.removeAttribute("class");  
     // show final score
     var finalScoreEl = document.getElementById("final-score");
     finalScoreEl.textContent = time;
-  
+    if (time <= 0) {
+        finalScoreEl.textContent = 0
+    }  
     // hide questions section
     questionContainerEL.classList.add("hide");
 }
@@ -149,8 +145,7 @@ function gameOverEl() {
 function outOfTime() {
     // update time
     time--;
-    timeLeftEl.textContent = time;
-  
+    timeLeftEl.textContent = time; 
     // check if user ran out of time
     if (time <= 0) {
         gameOverEl();
@@ -159,25 +154,23 @@ function outOfTime() {
 
 function saveHighscore() {
     // get value of input box
-    var initials = initialsEl.value.trim();
-  
+    var initials = initialsEl.value.trim(); 
     if (initials !== "") {
-      // get saved scores from localstorage, or if not any, set to empty array
-      var highscores =
-        JSON.parse(window.localStorage.getItem("highscores")) || [];
-  
-      // format new score object for current user
-      var newScore = {
-        score: time,
-        initials: initials
-      };
-  
-      // save to localstorage
-      highscores.push(newScore);
-      window.localStorage.setItem("highscores", JSON.stringify(highscores));
-  
-      // redirect to next page
-      window.location.href = "scoreboard.html";
+        // get saved scores from localstorage, or if not any, set to empty array
+        var highscores =
+            JSON.parse(window.localStorage.getItem("highscores")) || [];
+    
+        // format new score object for current user
+        var newScore = {
+            score: time,
+            initials: initials
+        };
+        // save to localstorage
+        highscores.push(newScore);
+        window.localStorage.setItem("highscores", JSON.stringify(highscores));
+    
+        // redirect to next page
+        window.location.href = "scoreboard.html";
     }
 }
 

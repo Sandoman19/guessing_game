@@ -33,9 +33,9 @@ body.wrong {
     --hue: var(--hue-wrong);
 }
 
-.container {
+.container, .wrapper {
     width: 800px;
-    height: 800px;
+    height: 600px;
     max-height: 80%;    
     max-width: 80%;
     background-color: white;
@@ -46,6 +46,7 @@ body.wrong {
 
 .btn-grid {
     display: grid;
+    grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
 }
@@ -54,13 +55,20 @@ body.wrong {
     --hue: var(--hue-neutral);
     border: 1px solid hsl(var(--hue), 100%, 30%);
     background-color: hsl(var(--hue), 100%, 50%);
-    border-radius: 5px;
-    padding: 5px 10px;
+    border-radius: 10px;
+    padding: 20px 20px;
+    font-size: 1.5rem;
     color: white;
     outline: none;
 }
 
+#question {
+    font-size: 1.5rem; 
+    padding: 10px 20px;   
+}
+
 .btn:hover {
+    border: 3px solid hsl(var(--hue), 100%, 30%);
     border-color: black;
 }
 
@@ -73,10 +81,14 @@ body.wrong {
     --hue: var(--hue-wrong);
 }
 
-.start-btn, .next-btn {
+.start-btn, .next-btn, .go-back-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;   
+}
+
+p, #initials {
+    font-size: 1.5rem; 
 }
 
 .controls {

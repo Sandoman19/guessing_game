@@ -14,12 +14,10 @@
         <div class="container">
 
             <header class="row">
-                <!-- Highscore/leadersboard -->                 
-                <div class="highscores" id="highscores">
-                    <a href="./highScore.html">View Highscores</a>
-                </div>
                 <!-- Timer -->         
-                <div class="timer">Time: <span id="time"></span></div>
+                <div class="timer hide" id="timer">
+                    Time: <span id="time"></span>
+                </div>
     
             </header>
 
@@ -27,7 +25,7 @@
                 <!-- header -->
                 <h1>Sando's Quiz About Coding</h1>
                 <p>
-                    You will have 120 seconds to answer nine 
+                    You will have 90 seconds to answer nine 
                     questions to prove you know your stuff. 
                     Each incorrect answer will result in your score and time being 
                     deducted by 10.
@@ -47,11 +45,10 @@
             <!-- Start and next button -->  
             <div class="controls">
                 <button id="start-btn" class="start-btn btn">Start</button>
-                <button id="next-btn" class="next-btn btn hide">Next</button>
             </div> 
             <div id="game-over-screen" class="hide">
                 <!-- header -->
-                <h2>GAME OVER</h2>
+                <h1>GAME OVER</h1>
                 <!-- Note final score -->
                 <p>
                     You scored <span id="final-score"></span>.
@@ -63,7 +60,10 @@
                 </p>
 
             </div>
-
+            <!-- Highscore/leadersboard -->                 
+            <div class="highscores" id="highscores">
+                <a href="scoreboard.html">View Highscores</a>
+            </div>
         </div>
 
         <!-- grab javaScript -->  
